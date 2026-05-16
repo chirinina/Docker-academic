@@ -1,0 +1,659 @@
+DOCUMENTACION DE ENTREGA
+PROYECTO: CV PERSONAL CON DOCKER, REACT, NODE.JS Y MYSQL
+
+============================================================
+1. DATOS GENERALES
+============================================================
+
+Estudiante:
+Efrain Chiri Nina
+
+Proyecto:
+Aplicación web de CV personal
+
+Materia:
+Docker / Contenedores / Desarrollo Web
+
+Objetivo del proyecto:
+Implementar una aplicación web de CV personal utilizando Docker Compose,
+Dockerfiles, redes, volúmenes y contenedores integrados con React, Node.js y MySQL.
+
+============================================================
+2. URL DEL REPOSITORIO EN GITHUB
+============================================================
+
+URL del repositorio:
+PEGAR AQUI LA URL DEL REPOSITORIO DE GITHUB
+
+Ejemplo:
+https://github.com/usuario/Docker-academic
+
+============================================================
+3. IMAGENES PUBLICADAS EN DOCKER HUB
+============================================================
+
+Imagen del frontend:
+chiri-frontend:v1
+
+Imagen del backend:
+chiri-backend:v1
+
+Repositorio Docker Hub del frontend:
+PEGAR AQUI LA URL O NOMBRE COMPLETO
+
+Ejemplo:
+usuario_dockerhub/chiri-frontend:v1
+
+Repositorio Docker Hub del backend:
+PEGAR AQUI LA URL O NOMBRE COMPLETO
+
+Ejemplo:
+usuario_dockerhub/chiri-backend:v1
+
+============================================================
+4. DESCRIPCION DEL PROYECTO
+============================================================
+
+El proyecto consiste en una aplicación web que muestra un CV personal.
+La información del CV no está escrita directamente en el frontend, sino que
+se obtiene desde una base de datos MySQL mediante un backend desarrollado
+con Node.js.
+
+La aplicación muestra:
+- Nombre
+- Apellido
+- Ciudad
+- Fotografía personal
+- Formación académica en formato de listado
+
+La solución se ejecuta mediante Docker Compose con tres servicios:
+- frontend
+- backend
+- database
+
+Al ejecutar el comando:
+docker compose up -d
+
+Docker Compose inicia automáticamente todos los contenedores necesarios para
+que la aplicación funcione.
+
+============================================================
+5. ARQUITECTURA DE LA SOLUCION
+============================================================
+
+Servicios utilizados:
+
+Servicio: frontend
+Tecnología: ReactJS + Nginx
+Puerto: 3000
+Imagen: chiri-frontend:v1
+
+Servicio: backend
+Tecnología: Node.js + Express
+Puerto: 4000
+Imagen: chiri-backend:v1
+Reinicio automático: restart: always
+
+Servicio: database
+Tecnología: MySQL 8.0
+Puerto interno: 3306
+Puerto publicado en host: 3307
+Imagen: mysql:8.0
+
+============================================================
+6. GRAFICO DE ARQUITECTURA
+============================================================
+
+                 Navegador Web
+                      |
+                      | http://localhost:3000
+                      v
+        +-----------------------------+
+        | frontend                    |
+        | ReactJS + Nginx             |
+        | Puerto: 3000                |
+        +--------------+--------------+
+                       |
+                       | GET /cv
+                       | http://backend:4000/cv
+                       v
+        +-----------------------------+
+        | backend                     |
+        | Node.js + Express           |
+        | Puerto: 4000                |
+        | Endpoint: GET /cv           |
+        +--------------+--------------+
+                       |
+                       | Conexion interna por red Docker
+                       v
+        +-----------------------------+
+        | database                    |
+        | MySQL 8.0                   |
+        | Base de datos: cv_db        |
+        +--------------+--------------+
+                       |
+                       v
+              Volumen Docker mysql_data
+
+Todos los servicios se comunican mediante una sola red Docker:
+cv_network
+
+============================================================
+7. ESTRUCTURA DEL PROYECTO
+============================================================
+
+Docker-academic/
+|-- backend/
+|   |-- Dockerfile
+|   |-- index.js
+|   |-- package.json
+|
+|-- database/
+|   |-- init.sql
+|
+|-- frontend/
+|   |-- Dockerfile
+|   |-- nginx.conf
+|   |-- package.json
+|   |-- index.html
+|   |-- public/
+|   |-- src/
+|
+|-- docker-compose.yml
+|-- README.md
+|-- DOCUMENTACION_ENTREGA.txt
+
+============================================================
+8. FRONTEND
+============================================================
+
+El frontend fue desarrollado con ReactJS.
+
+Funciones principales:
+- Consume datos desde el backend.
+- Muestra los datos personales del estudiante.
+- Muestra la fotografía personal.
+- Muestra la formación académica como listado.
+- Se ejecuta en el puerto 3000.
+- Cuenta con Dockerfile propio.
+- Utiliza Nginx 1.27 Alpine para servir la aplicación en producción.
+
+Puerto de acceso:
+http://localhost:3000
+
+Dockerfile del frontend:
+frontend/Dockerfile
+
+Imagen:
+chiri-frontend:v1
+
+============================================================
+9. BACKEND
+============================================================
+
+El backend fue desarrollado con Node.js y Express.
+
+Funciones principales:
+- Expone el endpoint GET /cv.
+- Se conecta a la base de datos MySQL.
+- Consulta la tabla persona.
+- Consulta la tabla formacion.
+- Devuelve los datos en formato JSON.
+- Se ejecuta en el puerto 4000.
+- Cuenta con Dockerfile propio.
+- Tiene reinicio automático configurado con restart: always.
+
+Endpoint:
+GET http://localhost:4000/cv
+
+Dockerfile del backend:
+backend/Dockerfile
+
+Imagen:
+chiri-backend:v1
+
+============================================================
+10. BASE DE DATOS
+============================================================
+
+La base de datos utilizada es MySQL 8.0.
+
+Nombre de la base de datos:
+cv_db
+
+La base de datos se crea automáticamente al iniciar Docker Compose.
+La creación de tablas y registros se realiza mediante el script:
+
+database/init.sql
+
+Este archivo se monta dentro del contenedor MySQL en:
+/docker-entrypoint-initdb.d/init.sql
+
+Por este motivo, MySQL ejecuta automáticamente el script durante la primera
+inicialización del volumen.
+
+============================================================
+11. ESTRUCTURA DE LA BASE DE DATOS
+============================================================
+
+Tabla: persona
+
+Campos:
+- id INT AUTO_INCREMENT PRIMARY KEY
+- nombre VARCHAR(100)
+- apellido VARCHAR(100)
+- ciudad VARCHAR(100)
+- foto VARCHAR(255)
+
+Tabla: formacion
+
+Campos:
+- id INT AUTO_INCREMENT PRIMARY KEY
+- titulo VARCHAR(255)
+- institucion VARCHAR(255)
+- anio VARCHAR(50)
+- persona_id INT
+
+Relación:
+formacion.persona_id referencia a persona.id
+
+============================================================
+12. DATOS INSERTADOS AUTOMATICAMENTE
+============================================================
+
+Datos personales:
+- Nombre: Efrain
+- Apellido: Chiri Nina
+- Ciudad: Sucre - Bolivia
+- Fotografía: /Foto 4x4.png
+
+Formación académica:
+1. Tecnico Superior Sistemas Informaticos
+   Instituto Tecnico CCA Corporacion Cibernetica Americana
+   Año: 2024
+
+2. Diplomado Full Stack Developer Backend, Frontend y USIP
+   Universidad de Simon I Patiño
+   Año: 2026
+
+============================================================
+13. DOCKER COMPOSE
+============================================================
+
+El archivo docker-compose.yml define los siguientes servicios obligatorios:
+- frontend
+- backend
+- database
+
+También define:
+- Una sola red Docker: cv_network
+- Un volumen para MySQL: mysql_data
+- Dependencias mediante depends_on
+- Versiones específicas de imágenes
+- Reinicio automático en backend mediante restart: always
+
+Comando principal de ejecución:
+docker compose up -d
+
+============================================================
+14. VOLUMEN DOCKER
+============================================================
+
+El proyecto utiliza un volumen Docker para persistir los datos de MySQL.
+
+Volumen:
+mysql_data
+
+Uso:
+Permite que la información de la base de datos permanezca guardada aunque
+los contenedores se detengan.
+
+Si se desea reiniciar la base de datos desde cero, se puede ejecutar:
+docker compose down -v
+
+Luego volver a iniciar:
+docker compose up -d
+
+============================================================
+15. RED DOCKER
+============================================================
+
+El proyecto utiliza una sola red Docker:
+cv_network
+
+Todos los servicios se conectan a esta red:
+- frontend
+- backend
+- database
+
+Gracias a esta red, el backend puede conectarse a MySQL usando el nombre del
+servicio:
+database
+
+============================================================
+16. FLUJO DE FUNCIONAMIENTO
+============================================================
+
+Al ejecutar:
+docker compose up -d
+
+El funcionamiento esperado es:
+
+1. Docker Compose inicia el servicio database con MySQL 8.0.
+2. MySQL crea la base de datos cv_db.
+3. MySQL ejecuta automáticamente el archivo init.sql.
+4. El script SQL crea las tablas persona y formacion.
+5. El script SQL inserta los datos iniciales.
+6. Docker Compose inicia el backend.
+7. El backend intenta conectarse a MySQL.
+8. Si MySQL aún no está listo, el backend reintenta la conexión.
+9. El backend queda disponible en el puerto 4000.
+10. El backend expone el endpoint GET /cv.
+11. Docker Compose inicia el frontend.
+12. El frontend queda disponible en el puerto 3000.
+13. El navegador carga la aplicación desde http://localhost:3000.
+14. El frontend consume los datos desde el backend.
+15. El backend obtiene la información desde MySQL.
+16. El navegador muestra el CV personal.
+
+============================================================
+17. INSTRUCCIONES DE EJECUCION
+============================================================
+
+Requisitos:
+- Docker instalado
+- Docker Compose instalado
+- Git instalado
+
+Paso 1: Clonar el repositorio
+
+git clone PEGAR_AQUI_URL_DEL_REPOSITORIO
+
+Paso 2: Ingresar al proyecto
+
+cd Docker-academic
+
+Paso 3: Levantar la aplicación completa
+
+docker compose up -d
+
+Paso 4: Verificar contenedores
+
+docker compose ps
+
+Paso 5: Abrir el navegador
+
+http://localhost:3000
+
+Paso 6: Probar el endpoint del backend
+
+http://localhost:4000/cv
+
+============================================================
+18. COMANDO UTILIZADO PARA INICIAR LA APLICACION
+============================================================
+
+docker compose up -d
+
+Este comando inicia toda la solución completa:
+- frontend
+- backend
+- database
+- red Docker
+- volumen MySQL
+- inicialización automática de la base de datos
+
+============================================================
+19. COMANDOS PARA CONSTRUIR IMAGENES
+============================================================
+
+Construir todas las imágenes desde Docker Compose:
+
+docker compose build
+
+Construir backend:
+
+docker build -t chiri-backend:v1 ./backend
+
+Construir frontend:
+
+docker build -t chiri-frontend:v1 ./frontend
+
+============================================================
+20. COMANDOS PARA PUBLICAR EN DOCKER HUB
+============================================================
+
+Iniciar sesión en Docker Hub:
+
+docker login
+
+Etiquetar imagen del backend:
+
+docker tag chiri-backend:v1 TU_USUARIO_DOCKERHUB/chiri-backend:v1
+
+Etiquetar imagen del frontend:
+
+docker tag chiri-frontend:v1 TU_USUARIO_DOCKERHUB/chiri-frontend:v1
+
+Publicar backend:
+
+docker push TU_USUARIO_DOCKERHUB/chiri-backend:v1
+
+Publicar frontend:
+
+docker push TU_USUARIO_DOCKERHUB/chiri-frontend:v1
+
+============================================================
+21. COMANDOS DE VERIFICACION
+============================================================
+
+Ver contenedores activos:
+
+docker compose ps
+
+Ver logs generales:
+
+docker compose logs -f
+
+Ver logs del backend:
+
+docker compose logs -f backend
+
+Ver logs de la base de datos:
+
+docker compose logs -f database
+
+Probar endpoint:
+
+http://localhost:4000/cv
+
+Probar aplicación:
+
+http://localhost:3000
+
+Detener contenedores:
+
+docker compose down
+
+Detener contenedores y eliminar volumen:
+
+docker compose down -v
+
+============================================================
+22. EVIDENCIAS PARA CAPTURAS DE PANTALLA
+============================================================
+
+CAPTURA 1: Construcción de imágenes
+
+Comando sugerido:
+docker compose build
+
+Debe mostrar que se construyen correctamente las imágenes:
+- chiri-backend:v1
+- chiri-frontend:v1
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DE CONSTRUCCION DE IMAGENES]
+
+------------------------------------------------------------
+
+CAPTURA 2: Imágenes creadas localmente
+
+Comando sugerido:
+docker images
+
+Debe mostrar:
+- chiri-backend     v1
+- chiri-frontend    v1
+- mysql             8.0
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DE IMAGENES LOCALES]
+
+------------------------------------------------------------
+
+CAPTURA 3: Publicación en Docker Hub
+
+Comandos sugeridos:
+docker push TU_USUARIO_DOCKERHUB/chiri-backend:v1
+docker push TU_USUARIO_DOCKERHUB/chiri-frontend:v1
+
+También se puede incluir captura del navegador en Docker Hub mostrando los
+repositorios publicados.
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DE PUBLICACION EN DOCKER HUB]
+
+------------------------------------------------------------
+
+CAPTURA 4: Ejecución de Docker Compose
+
+Comando sugerido:
+docker compose up -d
+
+Luego:
+docker compose ps
+
+Debe mostrar los contenedores:
+- chiri-db
+- chiri-backend
+- chiri-frontend
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DE DOCKER COMPOSE EJECUTANDO]
+
+------------------------------------------------------------
+
+CAPTURA 5: Creación automática de la base de datos
+
+Comando sugerido:
+docker compose logs database
+
+También se puede verificar ingresando a MySQL:
+docker exec -it chiri-db mysql -uroot -proot_password
+
+Comandos dentro de MySQL:
+SHOW DATABASES;
+USE cv_db;
+SHOW TABLES;
+SELECT * FROM persona;
+SELECT * FROM formacion;
+
+Debe evidenciar:
+- Base de datos cv_db creada
+- Tabla persona creada
+- Tabla formacion creada
+- Registros insertados automáticamente
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DE BASE DE DATOS CREADA AUTOMATICAMENTE]
+
+------------------------------------------------------------
+
+CAPTURA 6: Funcionamiento del backend
+
+Abrir en navegador:
+http://localhost:4000/cv
+
+Debe mostrar una respuesta JSON con:
+- personal
+- formacion
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DEL ENDPOINT /cv]
+
+------------------------------------------------------------
+
+CAPTURA 7: Funcionamiento de la aplicación en el navegador
+
+Abrir:
+http://localhost:3000
+
+Debe mostrar:
+- fotografía del estudiante
+- nombre
+- apellido
+- ciudad
+- formación académica
+
+Espacio para pegar captura:
+[PEGAR CAPTURA DEL CV EN EL NAVEGADOR]
+
+============================================================
+23. RESULTADO ESPERADO
+============================================================
+
+Después de ejecutar:
+docker compose up -d
+
+Al ingresar en:
+http://localhost:3000
+
+Se visualiza correctamente el CV del estudiante con:
+- Fotografía
+- Nombre
+- Apellido
+- Ciudad
+- Formación académica
+
+Toda la información proviene desde MySQL por medio del backend Node.js.
+
+============================================================
+24. CONCLUSION
+============================================================
+
+El proyecto cumple con los requisitos solicitados porque:
+- Tiene frontend desarrollado en ReactJS.
+- Tiene backend desarrollado en Node.js.
+- Tiene base de datos MySQL 8.0.
+- Utiliza Dockerfiles propios para frontend y backend.
+- Utiliza Docker Compose para levantar toda la aplicación.
+- Utiliza una red Docker única.
+- Utiliza un volumen Docker para persistencia de MySQL.
+- Crea automáticamente la base de datos mediante script SQL.
+- Inserta automáticamente los registros iniciales.
+- Expone el endpoint GET /cv.
+- Muestra el CV en el navegador desde http://localhost:3000.
+- La aplicación se inicia con un solo comando:
+  docker compose up -d
+
+============================================================
+25. CHECKLIST FINAL DE ENTREGA
+============================================================
+
+[ ] URL del repositorio de GitHub agregada.
+[ ] Nombres de imágenes Docker Hub agregados.
+[ ] Captura de construcción de imágenes agregada.
+[ ] Captura de publicación en Docker Hub agregada.
+[ ] Captura de Docker Compose ejecutándose agregada.
+[ ] Captura de creación automática de base de datos agregada.
+[ ] Captura del backend GET /cv agregada.
+[ ] Captura del frontend en navegador agregada.
+[ ] Instrucciones de ejecución agregadas.
+[ ] Comando docker compose up -d agregado.
+[ ] Documento convertido a PDF.
+
+============================================================
+FIN DEL DOCUMENTO
+============================================================
+
