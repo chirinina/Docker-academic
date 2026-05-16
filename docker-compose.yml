@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   database:
     image: mysql:8.0
@@ -13,15 +11,21 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
     networks:
       - cv_network
 
   backend:
-    image: chiri-backend:v1
-    build: ./backend
+    image: samchiri/chiri-backend:v1
+    build:
+      context: ./backend
     container_name: chiri-backend
     restart: always
-    command: npm run dev
     environment:
       DB_HOST: database
       DB_USER: root
@@ -30,28 +34,35 @@ services:
       PORT: 4000
     ports:
       - "4000:4000"
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
     depends_on:
-      - database
+      database:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://localhost:4000/cv', res => process.exit(res.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
     networks:
       - cv_network
 
   frontend:
-    image: chiri-frontend:v1
+    image: samchiri/chiri-frontend:v1
     build:
       context: ./frontend
-      target: build
     container_name: chiri-frontend
-    command: npm run dev
+    restart: always
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     networks:
       - cv_network
 

@@ -1,7 +1,5 @@
 # CV Personal con Docker Compose
 
-Aplicación web de CV personal desarrollada con React, Node.js y MySQL. El proyecto se ejecuta con Docker Compose y muestra la información personal y la formación académica almacenadas en la base de datos.
-
 ## Tecnologías utilizadas
 
 - Frontend: ReactJS + Nginx
@@ -66,13 +64,11 @@ Docker-academic/
 
 ## Servicios configurados
 
-| Servicio | Tecnología | Puerto | Imagen |
-|---|---|---:|---|
-| `frontend` | React + Nginx | `3000` | `chiri-frontend:v1` |
-| `backend` | Node.js | `4000` | `chiri-backend:v1` |
-| `database` | MySQL | `3306` en contenedor | `mysql:8.0` |
-
-Nota: en el archivo `docker-compose.yml`, MySQL esta publicado en el host como `3307:3306` para evitar conflictos si ya existe otro MySQL local.
+| Servicio   | Tecnología    |               Puerto | Imagen              |
+| ---------- | ------------- | -------------------: | ------------------- |
+| `frontend` | React + Nginx |               `3000` | `samchiri/chiri-frontend:v1` |
+| `backend`  | Node.js       |               `4000` | `samchiri/chiri-backend:v1`  |
+| `database` | MySQL         | `3306` en contenedor | `mysql:8.0`         |
 
 ## Base de datos
 
@@ -129,28 +125,12 @@ Respuesta esperada en formato JSON:
 }
 ```
 
-## Requisitos previos
-
-Tener instalado:
-
-- Docker
-- Docker Compose
-- Git
-
-Verificar instalación:
-
-```bash
-docker --version
-docker compose version
-git --version
-```
-
 ## Ejecución del proyecto
 
 Clonar el repositorio:
 
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/chirinina/Docker-academic.git
 cd Docker-academic
 ```
 
@@ -159,6 +139,8 @@ Iniciar toda la aplicación:
 ```bash
 docker compose up -d
 ```
+
+Docker Compose usara las imagenes publicadas en Docker Hub con el usuario `samchiri` y, si se ejecuta desde este repositorio, tambien puede reconstruirlas desde los Dockerfile incluidos.
 
 Verificar contenedores:
 
@@ -200,8 +182,8 @@ docker compose build
 También se puede construir por servicio:
 
 ```bash
-docker build -t chiri-backend:v1 ./backend
-docker build -t chiri-frontend:v1 ./frontend
+docker build -t samchiri/chiri-backend:v1 ./backend
+docker build -t samchiri/chiri-frontend:v1 ./frontend
 ```
 
 ## Publicación en Docker Hub
@@ -212,25 +194,24 @@ Iniciar sesión:
 docker login
 ```
 
-Etiquetar imágenes:
+Construir imágenes con el usuario `samchiri`:
 
 ```bash
-docker tag chiri-backend:v1 TU_USUARIO_DOCKERHUB/chiri-backend:v1
-docker tag chiri-frontend:v1 TU_USUARIO_DOCKERHUB/chiri-frontend:v1
+docker compose build
 ```
 
 Publicar imágenes:
 
 ```bash
-docker push TU_USUARIO_DOCKERHUB/chiri-backend:v1
-docker push TU_USUARIO_DOCKERHUB/chiri-frontend:v1
+docker push samchiri/chiri-backend:v1
+docker push samchiri/chiri-frontend:v1
 ```
 
-Nombres obligatorios de imágenes:
+Nombres de imágenes en Docker Hub:
 
 ```text
-chiri-backend:v1
-chiri-frontend:v1
+samchiri/chiri-backend:v1
+samchiri/chiri-frontend:v1
 ```
 
 ## Comandos útiles
@@ -287,4 +268,3 @@ Debe cumplirse lo siguiente:
 ## Autor
 
 Efrain Chiri Nina
-
