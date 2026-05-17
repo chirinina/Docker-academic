@@ -1,41 +1,59 @@
 # CV Personal con Docker Compose
 
-## Tecnologías utilizadas
+## 🚀 Tecnologías Utilizadas
 
-<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:25px; margin-top:30px;">
-  <div style="background:#61DBFB; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="65">
-  </div>
-  <div style="background:#009639; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="65">
-  </div>
-  <div style="background:#3C873A; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="65">
-  </div>
-  <div style="background:#444444; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="65">
-  </div>
-  <div style="background:#00758F; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="65">
-  </div>
-  <div style="background:#2496ED; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="65">
-  </div>
-  <div style="background:#24292E; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="65">
-  </div>
-  <div style="background:#F1502F; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="65">
-  </div>
-  <div style="background:#F7DF1E; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="65">
-  </div>
-  <div style="background:#E34F26; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="65">
-  </div>
-  <div style="background:#1572B6; padding:30px 20px; border-radius:18px; text-align:center;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="65">
-  </div>
+<div align="center">
+
+<table>
+<tr>
+
+<td align="center" width="140" height="140" bgcolor="#61DBFB">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="65"/><br><br>
+<b>React</b>
+</td>
+
+<td align="center" width="140" height="140" bgcolor="#009639">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="65"/><br><br>
+<b><font color="white">Nginx</font></b>
+</td>
+
+<td align="center" width="140" height="140" bgcolor="#3C873A">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="65"/><br><br>
+<b><font color="white">Node.js</font></b>
+</td>
+
+<td align="center" width="140" height="140" bgcolor="#444444">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="65"/><br><br>
+<b><font color="white">Express</font></b>
+</td>
+
+</tr>
+
+<tr>
+
+<td align="center" width="140" height="140" bgcolor="#00758F">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="65"/><br><br>
+<b><font color="white">MySQL</font></b>
+</td>
+
+<td align="center" width="140" height="140" bgcolor="#2496ED">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="65"/><br><br>
+<b><font color="white">Docker</font></b>
+</td>
+
+<td align="center" width="140" height="140" bgcolor="#24292E">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="65"/><br><br>
+<b><font color="white">GitHub</font></b>
+</td>
+
+<td align="center" width="140" height="140" bgcolor="#F1502F">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="65"/><br><br>
+<b><font color="white">Git</font></b>
+</td>
+
+</tr>
+</table>
+
 </div>
 
 ## Arquitectura del proyecto
