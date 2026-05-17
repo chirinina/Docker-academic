@@ -1,15 +1,64 @@
 # CV Personal con Docker Compose
-<p align="left"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="55" height="55" alt="React"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="55" height="55" alt="Nginx"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="55" height="55" alt="Node.js"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="55" height="55" alt="Express"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="55" height="55" alt="MySQL"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="55" height="55" alt="Docker"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="55" height="55" alt="GitHub"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="55" height="55" alt="Git"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="55" height="55" alt="JavaScript"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="55" height="55" alt="HTML5"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="55" height="55" alt="CSS3"/> </p>
-
-
 ## Tecnologías utilizadas
 
-- Frontend: ReactJS + Nginx
-- Backend: Node.js + Express
-- Base de datos: MySQL 8.0
-- Orquestación: Docker Compose
-- Red Docker: `cv_network`
-- Volumen Docker: `mysql_data`
+<div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; align-items:center; margin-top:20px;">
+
+  <div style="width:140px; height:140px; background:#61DBFB; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">React</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#009639; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">Nginx</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#3C873A; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">Node.js</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#444444; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">Express</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#00758F; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">MySQL</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#2496ED; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">Docker</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#24292E; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">GitHub</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#F1502F; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">Git</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#F7DF1E; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="60"/>
+    <p style="margin-top:10px; color:black; font-weight:bold;">JavaScript</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#E34F26; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">HTML5</p>
+  </div>
+
+  <div style="width:140px; height:140px; background:#1572B6; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="60"/>
+    <p style="margin-top:10px; color:white; font-weight:bold;">CSS3</p>
+  </div>
+
+</div>
 
 ## Arquitectura del proyecto
 
