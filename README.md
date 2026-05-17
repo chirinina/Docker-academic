@@ -1,6 +1,6 @@
 # CV Personal con Docker Compose
 
-## 🚀 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 <div align="center">
 
