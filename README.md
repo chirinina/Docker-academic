@@ -1,63 +1,41 @@
 # CV Personal con Docker Compose
+
 ## Tecnologías utilizadas
 
-<div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; align-items:center; margin-top:20px;">
-
-  <div style="width:140px; height:140px; background:#61DBFB; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">React</p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:25px; margin-top:30px;">
+  <div style="background:#61DBFB; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#009639; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">Nginx</p>
+  <div style="background:#009639; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#3C873A; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">Node.js</p>
+  <div style="background:#3C873A; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#444444; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">Express</p>
+  <div style="background:#444444; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#00758F; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">MySQL</p>
+  <div style="background:#00758F; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#2496ED; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">Docker</p>
+  <div style="background:#2496ED; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#24292E; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">GitHub</p>
+  <div style="background:#24292E; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#F1502F; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">Git</p>
+  <div style="background:#F1502F; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#F7DF1E; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="60"/>
-    <p style="margin-top:10px; color:black; font-weight:bold;">JavaScript</p>
+  <div style="background:#F7DF1E; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#E34F26; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">HTML5</p>
+  <div style="background:#E34F26; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="65">
   </div>
-
-  <div style="width:140px; height:140px; background:#1572B6; border-radius:20px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="60"/>
-    <p style="margin-top:10px; color:white; font-weight:bold;">CSS3</p>
+  <div style="background:#1572B6; padding:30px 20px; border-radius:18px; text-align:center;">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="65">
   </div>
-
 </div>
 
 ## Arquitectura del proyecto
