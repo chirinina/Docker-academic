@@ -141,37 +141,6 @@ persona(id, nombre, apellido, ciudad, foto)
 formacion(id, titulo, institucion, anio, persona_id)
 ```
 
-## Endpoint del backend
-
-El backend expone el siguiente endpoint:
-
-```http
-GET http://localhost:4000/cv
-```
-
-Respuesta esperada en formato JSON:
-
-```json
-{
-  "personal": {
-    "id": 1,
-    "nombre": "Efrain",
-    "apellido": "Chiri Nina",
-    "ciudad": "Sucre - Bolivia",
-    "foto": "/Foto 4x4.png"
-  },
-  "formacion": [
-    {
-      "id": 1,
-      "titulo": "Tecnico Superior Sistemas Informaticos",
-      "institucion": "Instituto Tecnico CCA Corporacion Cibernetica Americana",
-      "anio": "2024",
-      "persona_id": 1
-    }
-  ]
-}
-```
-
 ## Ejecución del proyecto
 
 Clonar el repositorio:
